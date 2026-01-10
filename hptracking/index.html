@@ -1,11 +1,718 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hierarchical Tracking</title>
-  </head>
-  <body>
-    <h2>Hierarchical Multi-Target Tracking</h2>
-    <p>Project page for our IEEE RAL paper. Code and results will be released soon.</p>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Hierarchical Planning for Long-Horizon Multi-Target Tracking Under Target Motion Uncertainty">
+  <meta name="keywords"
+    content="Target tracking, autonomous navigation, robotics, AI, autonomous systems, path planning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Junbin Yuan, Brady Moon, Muqing Cao, Sebastian Scherer">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+  <meta name="subject" content="Active Target Tracking, Path Planning, Autonomous Navigation">
+  <meta name="coverage" content="Worldwide">
+  <meta name="target" content="all">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#3498db">
+  <meta name="msapplication-TileColor" content="#3498db">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="HPtracking">
+  <meta name="application-name" content="HPtracking">
+  <meta name="msapplication-TileImage" content="static/images/favicon.ico">
+  <meta name="msapplication-config" content="none">
+  <link rel="canonical" href="https://yuanjunbin.github.io/hptracking">
+  <link rel="alternate" hreflang="en" href="https://yuanjunbin.github.io/hptracking">
+  <link rel="alternate" hreflang="x-default" href="https://yuanjunbin.github.io/hptracking">
+  <meta property="og:title"
+    content="Hierarchical Planning for Long-Horizon Multi-Target Tracking Under Target Motion Uncertainty" />
+  <meta property="og:description"
+    content="A hierarchical planning system for autonomous active target tracking of multiple moving targets with evolving uncertainty." />
+  <meta property="og:url" content="https://yuanjunbin.github.io/hptracking" />
+  <title>Hierarchical Planning for Long-Horizon Multi-Target Tracking Under Target Motion Uncertainty</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+
+  <meta property="og:image" content="https://yuanjunbin.github.io/hptracking/assets/first_photo.png" />
+
+  <meta name="twitter:title"
+    content="Hierarchical Planning for Long-Horizon Multi-Target Tracking Under Target Motion Uncertainty">
+  <meta name="twitter:description"
+    content="A hierarchical planning system for autonomous active target tracking of multiple moving targets with evolving uncertainty.">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="https://yuanjunbin.github.io/hptracking/assets/first_photo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <!-- <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE"> -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168125787-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-168125787-1');
+  </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.36.1/gradio.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Hierarchical Planning for Long-Horizon Multi-Target Tracking Under Target Motion Uncertainty",
+    "description": "A hierarchical planning system for autonomous active target tracking of multiple moving targets with evolving uncertainty.",
+    "keywords": "Target tracking, autonomous navigation, robotics, AI, autonomous systems, path planning",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Junbin Yuan",
+        "url": "https://www.linkedin.com/in/junbin-yuan-1a7643107/"
+      },
+      {
+        "@type": "Person", 
+        "name": "Brady Moon",
+        "url": "https://bradymoon.com/"
+      },
+      {
+        "@type": "Person",
+        "name": "Muqing Cao",
+        "url": "https://caomuqing.github.io/"
+      },
+      {
+        "@type": "Person",
+        "name": "Sebastian Scherer",
+        "url": "https://theairlab.org/team/sebastian/"
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Carnegie Mellon University Robotics Institute"
+    },
+    "datePublished": "2025",
+    "dateModified": "2025",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://yuanjunbin.github.io/hptracking"
+    },
+    "url": "https://yuanjunbin.github.io/hptracking",
+    "image": "https://yuanjunbin.github.io/hptracking/assets/first_photo.png"
+  }
+  </script>
+  <style>
+    .line-height-adjust {
+      line-height: 1.1;
+    }
+
+    .button-shadow {
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .blockMobile {
+      display: none;
+      /* Hide the component by default */
+    }
+
+    .image-overlay {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateX(30%) translateY(-50%);
+    }
+
+    @media only screen and (min-width: 768px) {
+      .blockMobile {
+        display: block;
+        /* Show the component for screen width 768px and above (desktop) */
+      }
+    }
+
+    .showMobile {
+      display: none;
+      /* Hide the component by default */
+    }
+
+    .bar-image {
+      max-width: 100px;
+      height: auto;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .showMobile {
+        display: block;
+        /* Show the component for screen width 768px and above (desktop) */
+      }
+
+      .image-overlay {
+        position: relative;
+        /* Move the image below the text */
+        top: 0;
+        transform: none;
+        /* Remove vertical centering */
+        margin-top: 20px;
+        /* Space between text and image */
+        margin-right: 0;
+        /* Remove right alignment */
+      }
+
+      .bar-image {
+        display: none;
+      }
+    }
+
+    #dynamic-content {
+      position: relative;
+      /* Ensure the content sections are positioned relative to this container */
+      min-height: 200px;
+      /* Optional: Set a minimum height to prevent collapsing before content is displayed */
+    }
+
+    #dynamic-content .content-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #dynamic-content .content-section.active {
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+      /* Allow active content to influence the height of #dynamic-content */
+    }
+
+
+    /* Dropdown content styling */
+    .dropdown-content {
+      text-align: left !important;
+    }
+
+    .dropdown-item {
+      text-align: left !important;
+    }
+
+    /* Button alignment fix */
+    .publication-links .link-block {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 2px;
+    }
+
+    .publication-links .link-block .button,
+    .publication-links .link-block .dropdown-trigger .button {
+      height: 2.5em !important;
+      min-height: 2.5em !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      vertical-align: middle !important;
+    }
+
+    .dropdown {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* Fix dropdown button alignment */
+    .dropdown-trigger .button {
+      height: 2.5em !important;
+      /* Match height of other buttons */
+      align-items: center;
+      display: inline-flex !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <!-- <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://yuanjunbin.github.io/hptracking/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+      </div> -->
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Hierarchical Planning for Long-Horizon Multi-Target Tracking Under
+              Target Motion Uncertainty</h1>
+            <h3 class="is-size-5 has-text-weight-bold" style="color: orange;">
+              IEEE Robotics and Automation Letters (RA-L), 2025
+            </h3>
+            <br>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/junbin-yuan-1a7643107/" target="_blank">Junbin Yuan</a>,</span>
+              <span class="author-block">
+                <a href="https://bradymoon.com/" target="_blank">Brady Moon</a>,</span>
+              <span class="author-block">
+                <a href="https://caomuqing.github.io/" target="_blank">Muqing Cao</a>,</span>
+              <span class="author-block">
+                <a href="https://theairlab.org/team/sebastian/" target="_blank">Sebastian Scherer</a>
+              </span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              <span class="author-block">Carnegie Mellon University Robotics Institute</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2510.10421" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="http://arxiv.org/abs/2510.10421" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://youtu.be/udsJWfMzjok" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero abstract_fig">
+    <div class="container is-max-desktop has-text-centered">
+
+      <!-- Description -->
+      <h2 class="subtitle has-text-justified" style="margin-bottom: 1.2em;">
+        A hierarchical planning system for autonomous active target tracking of multiple moving targets
+        with evolving uncertainty. By decomposing the multi-target tracking task to sub-tasks with
+        estimable outcome, our method is able to keep the overall uncertainty low at the end of a
+        specified time span.
+      </h2>
+
+      <!-- Video -->
+      <video autoplay loop muted playsinline preload="metadata" poster="assets/first_photo.png"
+        style="width: 100%; max-width: 720px; height: auto; border-radius: 8px;">
+        <source src="assets/intro_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Achieving persistent tracking of multiple dynamic targets over a large spatial area poses significant
+              challenges for a single-robot system with constrained sensing capabilities. As the robot moves to track
+              different targets, the ones outside the field of view accumulate uncertainty, making them progressively
+              harder to track. An effective path planning algorithm must manage uncertainty over a long horizon and
+              account for the risk of permanently losing track of targets that remain unseen for too long. However, most
+              existing approaches rely on short planning horizons and assume small, bounded environments, resulting in
+              poor tracking performance and target loss in large-scale scenarios. In this paper, we present a
+              hierarchical planner for tracking multiple moving targets with an aerial vehicle. To address the challenge
+              of tracking non-static targets, our method incorporates motion models and uncertainty propagation during
+              path execution, allowing for more informed decision-making. We decompose the multi-target tracking task
+              into sub-tasks of single target search and detection, and our proposed pipeline consists of a novel
+              low-level coverage planner that enables searching for a target in an evolving belief area, and an
+              estimation method to assess the likelihood of success for each sub-task, making it possible to convert the
+              active target tracking task to a Markov decision process (MDP) that we solve with a tree-based algorithm
+              to determine the sequence of sub-tasks. We validate our approach in simulation, demonstrating its
+              effectiveness compared to existing planners for active target tracking tasks, and our proposed planner
+              outperforms existing approaches, achieving a reduction of 11–70% in final uncertainty across different
+              environments. We also conduct a real-robot experiment to verify our method’s practical deployability.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <!-- ===================== Method Overview ===================== -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">System Overview</h2>
+            <div class="content has-text-justified">
+              <img src="assets/sys_fig.png" alt="MapExRL Pipeline Overview" style="width: 100%; height: auto;" />
+              <p>
+                Observed maps are processed through three independent global map prediction models, generating
+                prediction maps.
+                These maps are averaged and passed through a convolutional encoder to extract a 256-dimensional feature
+                vector. This vector is concatenated with frontier
+                centers, prediction and utility scores, distances from the agent, and remaining budget. The resulting
+                vector is fed into a fully connected network that outputs
+                N values, and the argmax is selected as the index of the frontier action.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- ===================== Coverage Planner ===================== -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Target Search under Motion Uncertainty</h2>
+            <div class="content has-text-justified">
+              <p>
+                Each moving target is represented by a time-evolving belief distribution that propagates under motion
+                uncertainty when the target is not observed. As the belief region expands and drifts with the predicted
+                target motion, the agent first intercepts the belief center and then executes a shifting spiral coverage
+                path that continuously adapts to the moving and growing uncertainty region.
+
+              </p>
+              <!-- Replace with Fig.3 -->
+              <figure style="margin-top: 0.8em;">
+                <img src="assets/coverage_test.png" alt="Shifting spiral coverage"
+                  style="width: 100%; height: auto; border-radius: 8px;">
+                <figcaption style="margin-top: 0.4em;
+                                    font-size: 0.9em;
+                                    color: #555;
+                                    text-align: center;">
+                  <em>
+                    Shifting spiral coverage for a moving target under motion uncertainty.
+                    Colored point clouds show 10,000 Monte Carlo samples of the target belief
+                    propagated under the same motion model at different time instances,
+                    while ellipses depict the corresponding covariance abstractions.
+                  </em>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Estimator + Global Planning ===================== -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Outcome Estimation + MCTS Global Planning</h2>
+
+            <div class="content has-text-justified">
+              <p>
+                To enable long-horizon decision making, we estimate the outcome of each target search task before
+                committing to execution. Given a predicted belief evolution and a coverage strategy, we approximate
+                how likely the target can be found and how much time the search is expected to consume. This allows
+                each search attempt to be summarized by a small set of outcome statistics that capture both success
+                likelihood and cost.
+                Using these estimates, we formulate the multi-target tracking problem as a sequential decision process
+                and apply a tree-based planner to determine which target to pursue next under a fixed time budget.
+                During execution, the planner can be re-invoked as new observations arrive, enabling adaptive and
+                robust long-horizon planning.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Results (Tabs) ===================== -->
+  <!-- ===================== Results (Tabs) ===================== -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Results</h2>
+
+            <div class="buttons is-centered">
+              <button class="button is-link button-shadow" type="button" onclick="showContent(2,3)">Qualitative</button>
+              <button class="button is-primary line-height-adjust button-shadow" type="button"
+                onclick="showContent(1,3)">Tables</button>
+            </div>
+
+            <div id="dynamic-content">
+              <!-- (1) Tables -->
+              <div class="content-section active" id="content-3-1">
+                <div class="content has-text-centered">
+                  <img src="assets/performance_comparison_1.png" alt="Performance comparison table 1"
+                    style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 0.8em;">
+                  <img src="assets/performance_comparison_2.png" alt="Performance comparison table 2"
+                    style="width: 100%; height: auto; border-radius: 8px;">
+                  <p style="font-size: 0.9em; margin-top: 0.6em; text-align: center;">
+                    <em>
+                      Quantitative comparison of final tracking uncertainty across different numbers of targets.
+                      We compare against ARVI&nbsp;[1], heuristic A*&nbsp;[2], and learning-based method&nbsp;[3].
+                      Lower values indicate better long-horizon tracking performance.
+                    </em>
+                  </p>
+
+                  <p style="font-size: 0.85em; margin-top: 0.4em; text-align: center; line-height: 1.4;">
+                    [1] B. Schlotfeldt, D. Thakur, N. Atanasov, V. Kumar, and G. J. Pappas,
+                    <i>Anytime Planning for Decentralized Multirobot Active Information Gathering</i>
+                    <br>
+                    [2] B. Schlotfeldt, N. Atanasov, and G. J. Pappas,
+                    <i>Maximum Information Bounds for Planning Active Sensing Trajectories</i>
+                    <br>
+                    [3] H. Jeong, C. Zhang, G. J. Pappas, and D. D. Lee,
+                    <i>Assumed Density Filtering Q-Learning</i>
+                  </p>
+                </div>
+              </div>
+
+              <!-- (2) Qualitative -->
+              <div class="content-section" id="content-3-2">
+                <div class="content">
+                  <div class="columns is-variable is-4 is-vcentered" style="margin-top: 0.4em;">
+
+                    <!-- 4 targets -->
+                    <div class="column is-6 has-text-centered">
+                      <video autoplay loop muted playsinline preload="metadata"
+                        style="width: 100%; max-width: 420px; height: auto; border-radius: 8px;">
+                        <source src="assets/video_4_targets_web.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>
+                      <p style="font-size: 0.9em; margin-top: 0.5em;">
+                        <em>4 targets</em>
+                      </p>
+                    </div>
+
+                    <!-- 6 targets -->
+                    <div class="column is-6 has-text-centered">
+                      <video autoplay loop muted playsinline preload="metadata"
+                        style="width: 100%; max-width: 420px; height: auto; border-radius: 8px;">
+                        <source src="assets/video_6_targets_web.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>
+                      <p style="font-size: 0.9em; margin-top: 0.5em;">
+                        <em>6 targets</em>
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div> <!-- /#dynamic-content -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Video ===================== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/udsJWfMzjok?rel=0" frameborder="0"
+              allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 400px; border-radius: 8px;">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BibTeX ===================== -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+      @article{yuan2025hptracking,
+        title   = {Hierarchical Planning for Long-Horizon Multi-Target Tracking Under Target Motion Uncertainty},
+        author  = {Yuan, Junbin and Moon, Brady and Cao, Muqing and Scherer, Sebastian},
+        journal = {IEEE Robotics and Automation Letters},
+        year    = {2025},
+        doi     = {10.1109/LRA.2025.3625492}
+      }
+    </code></pre>
+    </div>
+  </section>
+
+  <style>
+    #blocks {
+      width: 100%;
+      height: 60px;
+      margin: 0 auto;
+    }
+
+    #block1 {
+      height: 33.33%;
+      width: 30%;
+      float: left;
+    }
+
+    #block2 {
+      height: 33.33%;
+      width: 40%;
+      float: left;
+    }
+
+    #block3 {
+      height: 33.33%;
+      width: 30%;
+      float: right;
+    }
+  </style>
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div id="blocks">
+        <div id="block1">
+          <a href="https://theairlab.org/">
+            <img src="static/images/Horizontal@2x.png" alt="AirLab Logo" style="width:60%;">
+          </a>
+        </div>
+        <div id="block2">
+          <center>
+            <a class="button is-text" itemprop="linkedin"
+              href="https://www.linkedin.com/company/10629296/admin/feed/posts/" target="_blank">
+              <i class="fab fa-linkedin fa-lg" style="height:100%;"></i>
+            </a>
+            <a class="button is-text" itemprop="facebook" href="https://bsky.app/profile/airlabcmu.bsky.social"
+              target="_blank">
+              <img src="static/images/Bluesky_Logo.svg" alt="AirLab Logo" style="height:90%; filter: grayscale(90%);">
+            </a>
+            <a class="button is-text" itemprop="twitter" href="https://www.twitter.com/airlabcmu/" target="_blank">
+              <i class="fab fa-twitter fa-lg"></i>
+            </a>
+            <a class="button is-text" itemprop="medium" href="https://medium.com/airlabcmu" target="_blank">
+              <i class="fab fa-medium fa-lg"></i>
+            </a>
+            <a class="button is-text" itemprop="github" href="https://github.com/castacks" target="_blank">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+            <br>
+            <br>
+            <p class="" style="font-size: .65rem;">This webpage was adapted from the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project
+                Page Template</a>
+              template, which is licensed under a
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+                Attribution-ShareAlike 4.0 International License</a>.
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0; height: 0.65rem;"
+                  src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+              </a>
+            </p>
+            <p class="" style="font-size: .65rem;">If you use the <a
+                href="https://github.com/ia-tigris/ia-tigris.github.io">source code</a> of this webpage,
+              please link back to this page in the footer.
+            </p>
+            <!-- <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer.
+            </p> -->
+          </center>
+        </div>
+        <div id="block3">
+          <a href="https://www.ri.cmu.edu/">
+            <img src="static/images/riLogo2019.svg" alt="RI Logo" style="float: right;">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showContent(option, section) {
+      // Remove the active class from all sections
+      // const parentContainer = document.getElementById(`dynamic-content-${section}`);
+
+      const button = event.target;
+      const parentContainer = button.closest(".hero");
+
+      // Remove the active class from all content sections within this container
+      const sections = parentContainer.querySelectorAll(".content-section");
+      sections.forEach(contentSection => {
+        contentSection.classList.remove("active");
+      });
+
+      // Add the active class to the selected section
+      const selectedSection = document.getElementById(`content-${section}-${option}`);
+      if (selectedSection) {
+        selectedSection.classList.add("active");
+      }
+    }
+  </script>
+
+</body>
+
 </html>
