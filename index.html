@@ -1,11 +1,252 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <!-- Title -->
     <title>Junbin Yuan</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Isotope JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Removed: jQuery UI (unused) -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+
+
+    <!-- Google Font (keep only one load method) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <h2>Junbin Yuan</h2>
-    <p>Personal page under construction.</p>
+
+  <body id="body">
+
+    <div id="main">
+      <div id="intro">
+        <div id="intro-text">
+          <h1>Junbin Yuan</h1>
+          <p>
+            I am a Ph.D. candidate at Carnegie Mellon University (CMU), affiliated with the <a href="https://theairlab.org/"> AirLab </a> and advised by 
+            <a href = "https://theairlab.org/team/sebastian/"> Prof. Sebastian Scherer </a>.
+            
+            <br>
+            <br>
+            My research interests are aerial robots, informative path planning, autonomous navigation and perception/semantic-aware robot planning.
+            Feel free to reach out me via email for collaboration and discussion of research ideas.
+            <br>
+			<br>
+
+            Email: junbiny@andrew.cmu.edu
+            <br>
+            <br>
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://scholar.google.com/citations?user=aKcJr34AAAAJ"
+                  class="external-link button is-small is-rounded is-dark"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="icon">
+                    <i class="ai ai-google-scholar"></i>
+                  </span>
+                  <span>Scholar</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/YuanJunbin"
+                  class="external-link button is-small is-rounded is-dark"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>GitHub</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://www.linkedin.com/in/junbin-yuan"
+                  class="external-link button is-small is-rounded is-dark"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="icon">
+                    <i class="fab fa-linkedin-in"></i>
+                  </span>
+                  <span>LinkedIn</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="assets/CV.pdf"
+                  class="external-link button is-small is-rounded is-dark"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="icon">
+                    <i class="fas fa-file-lines"></i>
+                  </span>
+                  <span>CV</span>
+                </a>
+              </span>
+            </div>
+
+
+			</p>
+        </div>
+        <div id="intro-image">
+          <img src="assets/junbin.jpg">
+        </div>
+      </div>
+
+      <div id="filters" class="button-group">
+        <!-- <button class="button" data-filter="*">Show All</button> -->
+        <button class="button is-checked" data-filter=".publication">Publications</button>
+        <button class="button" data-filter=".project">Projects</button>
+      </div>
+
+      <div class="grid">
+
+        <!-- Publications -->
+        <div class="list-item publication" data-category="publication">
+          <a class="thumbnail">
+            <img src="assets/ia_tigris_image.png" alt="" />
+          </a>
+          <div class="project-description">
+            <h3>
+              IA-TIGRIS: An Incremental and Adaptive Sampling-Based Planner for Online Informative Path Planning
+            </h3>
+            <p>
+              <i>
+                Brady Moon, Nikhil Suvarna, Alex Jong, Sayan Chatterjee,
+                <b>Junbin Yuan</b>, Muqing Cao, and Sebastian Scherer
+              </i><br>
+              <a href="https://arxiv.org/abs/2502.15961" target="_blank" rel="noopener noreferrer">Paper</a>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <a href="https://ia-tigris.github.io/" target="_blank" rel="noopener noreferrer">Webpage</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="list-item publication" data-category="publication">
+          <a class="thumbnail">
+            <img src="assets/tracking_image.png" alt="" />
+          </a>
+          <div class="project-description">
+            <h3>
+              Hierarchical Planning for Long-Horizon Multi-Target Tracking under Evolving Uncertainty
+            </h3>
+            <p>
+              <i><b>Junbin Yuan</b>, Brady Moon, Muqing Cao, and Sebastian Scherer</i><br>
+              <i>IEEE Robotics and Automation Letters (RA-L), 2025.</i><br>
+              <a href="https://arxiv.org/abs/2510.10421" target="_blank" rel="noopener noreferrer">Paper</a>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <a href="https://yuanjunbin.github.io/hptracking/" target="_blank" rel="noopener noreferrer">Webpage</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="list-item publication" data-category="publication">
+          <a class="thumbnail">
+            <img src="assets/trochoid_image.png" alt="" />
+          </a>
+          <div class="project-description">
+            <h3>
+              Time-Optimal Path Planning in a Constant Wind for Uncrewed Aerial Vehicles Using Dubins Set Classification
+            </h3>
+            <p>
+              <i>Brady Moon, Sarthak Sachdev, <b>Junbin Yuan</b>, and Sebastian Scherer</i><br>
+              <i>IEEE Robotics and Automation Letters (RA-L), 2024.</i><br>
+              <a href="https://arxiv.org/abs/2306.11845" target="_blank" rel="noopener noreferrer">Paper</a>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <a href="https://bradymoon.com/trochoids" target="_blank" rel="noopener noreferrer">Webpage</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- honors -->
+        <div id="main-highlights">
+
+        <div class="list-item project" data-category="project">
+          <a class="thumbnail">
+            <img src="assets/shimizu_image.jpg" alt="" />
+          </a>
+          <div class="project-description">
+            <h3>Autonomous UAV-based Multi-Model High-Resolution Reconstruction for Aging Bridge Inspection</h3>
+            <p>
+              <br>
+              <a href="https://theairlab.org/shimizu/"
+                target="_blank" rel="noopener noreferrer">
+                Website
+              </a>
+            </p>
+          </div>
+        </div>
+
+        </div>
+
+      <div id="footer">
+      <br>
+      Feel free to use this website's <a href="https://github.com/YuanJunbin/YuanJunbin.github.io">source code</a>. Inspired by <a href="https://andyzeng.github.io/">Andy's website</a>.
+      </div>
+
+    </div>
+
+    <script>
+
+      // Isotope grid.
+      var $grid = $('.grid').isotope({
+        itemSelector: '.list-item',
+        layoutMode: 'fitRows',
+        transitionDuration: 0,
+        stagger: 10,
+        initLayout: false,
+        getSortData: {
+          name: '.name',
+          symbol: '.symbol',
+          number: '.number parseInt',
+          category: '[data-category]',
+          weight: function( itemElem ) {
+            var weight = $( itemElem ).find('.weight').text();
+            return parseFloat( weight.replace( /[\(\)]/g, '') );
+          }
+        }
+      });
+
+      // Bind filter button click.
+      $('#filters').on( 'click', 'button', function() {
+        var filterValue = $( this ).attr('data-filter');
+        localStorage.setItem('filterValue', filterValue);
+        $grid.isotope({ filter: filterValue });
+      });
+
+      // Change is-checked class on buttons.
+      $('.button-group').each( function( i, buttonGroup ) {
+        var $buttonGroup = $( buttonGroup );
+        $buttonGroup.on( 'click', 'button', function() {
+          $buttonGroup.find('.is-checked').removeClass('is-checked');
+          $( this ).addClass('is-checked');
+        });
+      });
+
+      function update_isotope() {
+        // Retrieve cached button click.
+        var defaultFilterValue = localStorage.getItem('filterValue');
+        if (defaultFilterValue == null) {
+          defaultFilterValue = ".publication"
+        }
+        $grid.isotope({ filter: defaultFilterValue });
+        var buttons = document.getElementsByClassName("button");
+        for (var currButton of buttons) {
+          if (currButton.getAttribute('data-filter') == defaultFilterValue) {
+            currButton.classList.add('is-checked');
+          } else {
+            currButton.classList.remove('is-checked');
+          }
+        }
+      }
+
+      update_isotope();
+
+    </script>
   </body>
 </html>
